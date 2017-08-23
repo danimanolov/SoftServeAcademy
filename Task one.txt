@@ -1,8 +1,5 @@
-The N'th digit of N*N number
-
 using System;
 using System.Numerics;
-using System.Text;
 
 namespace GitHub_All_Homeworks_Done
 {
@@ -11,20 +8,34 @@ namespace GitHub_All_Homeworks_Done
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
-            string number = Math.Pow(n,n).ToString();
-            string number2 = numberPow(n);
-            char numberAtPositionN = number.ToCharArray()[n];
-            char numberAtPositionN2 = number2.ToCharArray()[n];
-            Console.WriteLine(numberAtPositionN);
-            Console.WriteLine(numberAtPositionN2);
+            if (n < 1)
+            {
+                Console.WriteLine('*');
+            }
+            else
+            {
+                string number = RaiseItselfToPower(n);
+                if (number.Length < n)
+                {
+                    Console.WriteLine('*');
+                }
+                else
+                {
+                    char numberAtPositionN = number.ToCharArray()[n - 1];
+                    Console.WriteLine(number);
+                    Console.WriteLine(numberAtPositionN);
+                }
+            }
+            
         }
-        static string numberPow(int n)
+        //Raises a specific number to the power of itself
+        static string RaiseItselfToPower(int number)
         {
             BigInteger result = 1;
-            int temp = n;
-            while(temp > 0)
+            int temp = number;
+            while (temp > 0)
             {
-                result *= n;
+                result *= number;
                 temp--;
             }
 
